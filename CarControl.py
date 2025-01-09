@@ -11,12 +11,12 @@ TB6612FNG 接口
         GPIO_STBY = 27
         # 左边电机
         GPIO_PWMA = 18
-        GPIO_AIN1 = 14
-        GPIO_AIN2 = 15
+        GPIO_AIN1 = 17
+        GPIO_AIN2 = 27
         # 右边电机
         GPIO_PWMB = 19
-        GPIO_BIN1 = 23
-        GPIO_BIN2 = 24
+        GPIO_BIN1 = 22
+        GPIO_BIN2 = 23
 
 HC-SR04 接口
         GPIO_TRIG = 5
@@ -40,17 +40,17 @@ class Car(object):
 
         '''电机模块'''
         # STBY引脚定义
-        self.GPIO_STBY = 27
+        # self.GPIO_STBY = 27
         GPIO.setmode(GPIO.BCM)
         #GPIO.setwarnings(False)
-        GPIO.setup(self.GPIO_STBY, GPIO.OUT)
+        # GPIO.setup(self.GPIO_STBY, GPIO.OUT)
 
         # 左右两个电机
-        self.motor_left = Motor(18,14,15)
-        self.motor_right = Motor(19,23,24)
+        self.motor_left = Motor(18, 17, 27)
+        self.motor_right = Motor(19,22,23)
 
         # STBY = True  TB6612FNG开始工作
-        Motor.standby(self.GPIO_STBY,True)
+        # Motor.standby(self.GPIO_STBY,True)
 
         # 速度  占空比
         self.motor_speed = 60
